@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/atores', [AtoresController::class, 'index']);
+Route::get('/atores/create', [AtoresController::class, 'create']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
