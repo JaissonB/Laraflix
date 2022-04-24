@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.default')
 
     @section('content')
         <h1>Atores</h1>
@@ -10,17 +10,23 @@
             </thead>
             <tbody>
                 @foreach($atores as $ator)
-                    @php($ator->dt_nascimento = date('d-m-Y', strtotime($ator->dt_nascimento)))
                     <tr>
                         <td>{{ $ator->nome }}</td>
-                        <td>{{ $ator->dt_nascimento }}</td>
+                        <td>{{ Carbon\Carbon::parse($ator->dt_nascimento)->format('d/m/Y') }}</td>
                         <td>
                             <a href="{{ route('atores.edit', ['id'=>$ator->id]) }}" class='btn-sm btn-success'>Editar</a>
-                            <a href="{{ route('atores.destroy', ['id'=>$ator->id]) }}" class='btn-sm btn-danger'>Remover</a>
+                            <a href="#" onClick="return ConfirmaExclusao({{$ator->id}})" class='btn-sm btn-danger'>Remover</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        {{ $atores->links("pagination::bootstrap-4") }}
+
         <a href="{{ route('atores.create', []) }}" class='btn btn-info'>Adicionar</a>
     @stop
+
+    @section('table-delete')
+    "atores"
+    @endsection
