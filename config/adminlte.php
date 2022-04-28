@@ -228,9 +228,14 @@ return [
         // Navbar items:
         ['header' => 'ATORES'],
         [
-            'text'       => 'Listagem',
+            'text'       => 'Atores',
             'icon'       => 'fas fa-fw fa-users',
             'url'        => 'atores',
+        ],
+        [
+            'text'       => 'Nacionalidades',
+            'icon'       => 'fas fa-fw fa-flag',
+            'url'        => 'nacionalidades',
         ],
     ],
 
